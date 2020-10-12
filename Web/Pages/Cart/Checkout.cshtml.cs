@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using AuthorizeNet.Api.Contracts.V1;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -45,6 +46,20 @@ namespace Web.Pages.Cart
         }
         public async Task<IActionResult> OnPostAsync()
         {
+            CartItems = await _context.CartItems
+                .Where(c => c.UserId == userManager.GetUserId(User))
+                .Where(c => c.Quantity > 0)
+                .Include(c => c.Product).ToListAsync();
+
+            decimal total = 0;
+            foreach (var item in CartItems)
+            {
+                decimal itemPrice = item.Product.Price * Convert.ToDecimal(item.Quantity);
+                total = total + itemPrice;
+            }
+            CartTotal = total;
+            
+            
 
             if (ModelState.IsValid)
             {
@@ -85,6 +100,8 @@ namespace Web.Pages.Cart
 
                     await _context.SaveChangesAsync();
                 }
+
+                
                 return LocalRedirect("~/Index");
             }
             return Page();

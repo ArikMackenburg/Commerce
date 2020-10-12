@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Web.Data;
+using Web.Models.Checkout;
 using Web.Models.Identity;
 using Web.Service;
 
@@ -16,11 +17,12 @@ namespace Web
 {
     public class Startup
     {
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
+        
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -39,6 +41,7 @@ namespace Web
                 .AddDefaultTokenProviders();
             //services.AddSingleton<IEmailService, SendGridEmailService>();
             services.AddSingleton<GenerateData>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
