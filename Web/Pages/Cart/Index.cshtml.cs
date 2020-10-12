@@ -41,5 +41,18 @@ namespace Web.Pages.Cart
             }
             CartTotal = total;
         }
+
+        public async Task<IActionResult> RemoveCartItem(int id)
+        {
+            var existingCartItem = await _context.CartItems
+                       .FirstOrDefaultAsync(c =>
+                           c.ProductId == id &&
+                           c.UserId == userManager.GetUserId(User)
+                       );
+            existingCartItem.Quantity = 0;
+            await _context.SaveChangesAsync();
+
+            return LocalRedirect("~/Index");
+        }
     }
 }
