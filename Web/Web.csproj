@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Pages\Shared\Components\CartComponent\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AuthorizeNet" Version="2.0.1" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />

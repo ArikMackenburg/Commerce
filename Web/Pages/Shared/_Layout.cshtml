@@ -31,7 +31,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Products/Index">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Cart/Index">Cart</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Cart/Index">Cart @await Component.InvokeAsync("CartComponent")</a>
                         </li>
                     </ul>
                 </div>
