@@ -7,6 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201011215832_Checkout.cs" />
+    <Compile Remove="Migrations\20201011215832_Checkout.Designer.cs" />
+    <Compile Remove="Migrations\20201011215944_Checkout.cs" />
+    <Compile Remove="Migrations\20201011215944_Checkout.Designer.cs" />
+    <Compile Remove="Migrations\20201011220655_Checkout.cs" />
+    <Compile Remove="Migrations\20201011220655_Checkout.Designer.cs" />
+    <Compile Remove="Migrations\20201011232345_Checkout.cs" />
+    <Compile Remove="Migrations\20201011232345_Checkout.Designer.cs" />
+    <Compile Remove="Migrations\20201011235522_Checkout.cs" />
+    <Compile Remove="Migrations\20201011235522_Checkout.Designer.cs" />
+    <Compile Remove="Migrations\20201012000231_Checkout.cs" />
+    <Compile Remove="Migrations\20201012000231_Checkout.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.7" />

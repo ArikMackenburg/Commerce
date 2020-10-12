@@ -10,34 +10,42 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CartItem[0].Product)
+                @Html.DisplayNameFor(model => model.CartItems[0].Product)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CartItem[0].Quantity)
+                @Html.DisplayNameFor(model => model.CartItems[0].Quantity)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CartItem[0].Product.Price)
+                @Html.DisplayNameFor(model => model.CartItems[0].Product.Price)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.CartItem) 
-{
+        @foreach (var item in Model.CartItems)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Product.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Remove", "Remove", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                $@Html.DisplayFor(modelItem => item.Product.Price) 
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+            <td></td>
+            <td></td>
+            <td>Total: $@Html.DisplayFor(model => model.CartTotal)</td>
+            <td></td>
         </tr>
-}
     </tbody>
+
 </table>
+<a class="btn btn-primary" asp-page="/Cart/Checkout">Checkout</a>

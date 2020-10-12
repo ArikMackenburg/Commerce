@@ -21,9 +21,11 @@ namespace Web.Pages.Products
 
         public IList<Product> Product { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string name)
         {
-            Product = await _context.Products.ToListAsync();
+            Product = await _context.Products.OrderBy(p=>p.Manufacturer).ToListAsync();
         }
+
+        
     }
 }

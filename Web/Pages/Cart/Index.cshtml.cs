@@ -23,15 +23,23 @@ namespace Web.Pages.Cart
             this.userManager = userManager;
 
         }
-      
-        public IList<CartItem> CartItem { get;set; }
+        public decimal CartTotal { get; set; }
+        public IList<CartItem> CartItems { get;set; }
 
         public async Task OnGetAsync()
         {
-            CartItem = await _context.CartItems
+            CartItems = await _context.CartItems
                 .Where(c => c.UserId == userManager.GetUserId(User))
                 .Where(c => c.Quantity > 0)
                 .Include(c => c.Product).ToListAsync();
+
+            decimal total = 0;
+            foreach(var item in CartItems)
+            {
+                decimal itemPrice = item.Product.Price * Convert.ToDecimal(item.Quantity);
+                total = total + itemPrice;
+            }
+            CartTotal = total;
         }
     }
 }

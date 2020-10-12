@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Web.Models.Cart;
+using Web.Models.Checkout;
 using Web.Models.Identity;
+using Web.Models.Orders;
 using Web.Models.Products;
 
 namespace Web.Data
@@ -29,6 +31,7 @@ namespace Web.Data
                     cartItem.UserId,
                     cartItem.ProductId,
                 });
+           
         }
 
         private int nextRoleClaimId = 1;
@@ -61,5 +64,6 @@ namespace Web.Data
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }
