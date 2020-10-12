@@ -42,17 +42,23 @@ namespace Web.Pages.Cart
             CartTotal = total;
         }
 
-        public async Task<IActionResult> RemoveCartItem(int id)
+        public async Task<IActionResult> OnPostAsync()
         {
             var existingCartItem = await _context.CartItems
                        .FirstOrDefaultAsync(c =>
-                           c.ProductId == id &&
+                           c.ProductId == ProductId &&
                            c.UserId == userManager.GetUserId(User)
                        );
-            existingCartItem.Quantity = 0;
+            existingCartItem.Quantity = Quantity;
             await _context.SaveChangesAsync();
 
             return LocalRedirect("~/Index");
         }
+
+        [BindProperty]
+        public int Quantity { get; set; }
+
+        [BindProperty]
+        public int ProductId { get; set; }
     }
 }

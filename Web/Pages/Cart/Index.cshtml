@@ -35,7 +35,11 @@
                     $@Html.DisplayFor(modelItem => item.Product.Price)
                 </td>
                 <td>
-                    <a class="btn btn-primary" asp-action="@Model.RemoveCartItem(item.ProductId)">Remove</a>
+                    <form method="post">
+                        <input type="hidden" asp-for="Quantity" value="0" />
+                        <input type="hidden" asp-for="ProductId" value="@item.ProductId" />
+                        <button class="btn btn-primary">Remove</button>
+                    </form>
                 </td>
             </tr>
         }
