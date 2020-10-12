@@ -3,8 +3,65 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid">
+    <h1>Featured Products</h1>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a asp-page="./Products/Details" asp-route-id="9"><img class="d-block w-100 rounded" src="~/Assets/placeholder-image.jpg" alt="First slide"></a>
+            </div>
+            <div class="carousel-item">
+                <a asp-page="./Products/Details" asp-route-id="10"><img class="d-block w-100 rounded" src="~/Assets/placeholder-image.jpg" alt="Second slide"></a>
+            </div>
+            <div class="carousel-item">
+                <a asp-page="./Products/Details" asp-route-id="11"><img class="d-block w-100 rounded" src="~/Assets/placeholder-image.jpg" alt="Third slide"></a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 </div>
+
+<div class="container-fluid">
+    <div class="row flex-row overflow-auto">
+        <div class="col-3">
+            <a asp-page="./Products/Details" asp-route-id="1"><img src="~/Assets/300.png" class="figure-img img-fluid rounded"/></a>
+        </div>
+        <div class="col-3">
+            <a asp-page="./Products/Details" asp-route-id="2"><img src="~/Assets/300.png" class="figure-img img-fluid rounded" /></a>
+        </div>
+        <div class="col-3">
+            <a asp-page="./Products/Details" asp-route-id="3"><img src="~/Assets/300.png" class="figure-img img-fluid rounded" /></a>
+        </div>
+        <div class="col-3">
+            <a asp-page="./Products/Details" asp-route-id="4"><img src="~/Assets/300.png" class="figure-img img-fluid rounded" /></a>
+        </div>
+        <div class="col-3">
+            <a asp-page="./Products/Details" asp-route-id="5"><img src="~/Assets/300.png" class="figure-img img-fluid rounded" /></a>
+        </div>
+        <div class="col-3">
+            <a asp-page="./Products/Details" asp-route-id="6"><img src="~/Assets/300.png" class="figure-img img-fluid rounded" /></a>
+        </div>
+        <div class="col-3">
+            <a asp-page="./Products/Details" asp-route-id="7"><img src="~/Assets/300.png" class="figure-img img-fluid rounded" /></a>
+        </div>
+        <div class="col-3">
+            <a asp-page="./Products/Details" asp-route-id="8"><img src="~/Assets/300.png" class="figure-img img-fluid rounded" /></a>
+        </div>
+    </div>
+</div>
+
+
+
+

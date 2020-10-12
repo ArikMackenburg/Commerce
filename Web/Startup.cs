@@ -12,6 +12,7 @@ using Web.Data;
 using Web.Models.Checkout;
 using Web.Models.Identity;
 using Web.Service;
+using Web.Services;
 
 namespace Web
 {
@@ -29,7 +30,7 @@ namespace Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            //services.AddSingleton<IUploadServices, AzureUploadService>();
+            services.AddSingleton<IUploadServices, AzureUploadService>();
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 var connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -39,7 +40,7 @@ namespace Web
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-            //services.AddSingleton<IEmailService, SendGridEmailService>();
+            services.AddSingleton<IEmailService, SendGridEmailService>();
             services.AddSingleton<GenerateData>();
             
         }

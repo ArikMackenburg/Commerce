@@ -5,7 +5,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Products</h1>
 <form>
     <label><input type="text" name="name" /></label>
     &nbsp;
@@ -17,42 +17,26 @@
         <a asp-page="Create">Create New</a>
     }
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Manufacturer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Product) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer)
-            </td>
-            <td>
-               $@Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @if (User.IsInRole("Admin"))
-                {
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> <text>|</text>
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> <text>|</text>
-                }
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container-fluid">
+    <div class="row flex-row overflow-auto">
+        @foreach (var item in Model.Product)
+        {
+        <div class="col-3 card">
+            <div class="card-body">
+                <a asp-page="./Products/Details" asp-route-id="@item.Id"><img src="~/Assets/300.png" class="figure-img img-fluid rounded card-img-top" /></a>
+                
+                    <h5>@item.Name</h5>
+                    <h6>@item.Manufacturer</h6>
+                    <p>@item.Price</p>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> <text>|</text>
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> <text>|</text>
+                    }
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                </div>
+            </div>
+            }
+        </div>
+</div>
+

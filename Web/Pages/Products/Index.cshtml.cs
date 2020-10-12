@@ -24,6 +24,15 @@ namespace Web.Pages.Products
         public async Task OnGetAsync(string name)
         {
             Product = await _context.Products.OrderBy(p=>p.Manufacturer).ToListAsync();
+            if(name != null)
+            {
+                var searchResult = Product.Where(p => p.Name.ToLower() == name.ToLower());
+                if(searchResult.Count() == 0)
+                {
+                    searchResult = Product.Where(p => p.Manufacturer.ToLower() == name.ToLower());
+                }
+                Product = searchResult.ToList();
+            }
         }
 
         
