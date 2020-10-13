@@ -1,0 +1,61 @@
+﻿@page
+@model Web.Pages.Cart.CheckoutModel
+@{
+}
+<h1>Checkout</h1>
+<div>
+    <h2>Total: $@Model.CartTotal</h2>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Input.FirstName"></label>
+            <input asp-for="Input.FirstName" />
+            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.LastName"></label>
+            <input asp-for="Input.LastName" />
+            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Address"></label>
+            <input asp-for="Input.Address" />
+            <span asp-validation-for="Input.Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.City"></label>
+            <input asp-for="Input.City" />
+            <span asp-validation-for="Input.City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.State"></label>
+            <select asp-for="Input.State">
+                @foreach (Web.Models.Checkout.State state in Enum.GetValues(typeof(Web.Models.Checkout.State)))
+                {
+                    <option value="@state">@state</option>
+                }
+            </select>
+            <span asp-validation-for="Input.State" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.PostalCode"></label>
+            <input asp-for="Input.PostalCode" />
+            <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Country"></label>
+            <input asp-for="Input.Country" />
+            <span asp-validation-for="Input.Country" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" value="@Model.User.Claims.Where(c=>c.Type == System.Security.Claims.ClaimTypes.Name).Select(c => c.Value).SingleOrDefault()" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Phone"></label>
+            <input asp-for="Input.Phone" />
+            <span asp-validation-for="Input.Phone" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
